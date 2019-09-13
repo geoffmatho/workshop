@@ -1,0 +1,21 @@
+{% include 'workshop_week/head.html'%}
+
+{% if workshop %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{ workshop.title }}</h1>
+        {% for p in presenter %}
+        <h3>{{ p.first_name }} {{ p.last_name }}</h3>
+        {% endfor %}
+        <p>{{ workshop.description }}</p>
+
+    </div>
+</div>
+
+{% else %}
+    <p>No workshop found.</p>
+{% endif %}
+
+<footer>
+    <p>Workshop Week is administered by Mill Park Secondary College </p>
+</footer>

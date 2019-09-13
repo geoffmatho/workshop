@@ -1,0 +1,11 @@
+{% include 'workshop_week/head.html'%}
+
+{% if workshops %}
+    <ul>
+    {% for w in workshops %}
+        <li><a href="{% url 'workshop_detail' w.id %}">{{ w.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No workshops are currently available.</p>
+{% endif %}
