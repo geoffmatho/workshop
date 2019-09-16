@@ -24,7 +24,13 @@ def workshop_detail(request, id):
 
 def workshop_propose(request):
     if request.method == "POST":
-
+        form = ProposeForm(request.POST)
+        if form.is_valid():
+            workshop = form.save(commit=False)
+            workshop.presenter = request.user
+            workshop.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
     else:
         form = ProposeForm()
         return render(request, 'workshop_week/workshop_propose.html', {'form': form})
