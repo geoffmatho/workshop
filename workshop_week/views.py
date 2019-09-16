@@ -23,5 +23,8 @@ def workshop_detail(request, id):
 
 
 def workshop_propose(request):
-    form = ProposeForm()
-    return render(request, 'workshop_week/workshop_propose.html', {'form': form})
+    if request.method == "POST":
+
+    else:
+        form = ProposeForm()
+        return render(request, 'workshop_week/workshop_propose.html', {'form': form})

@@ -8,8 +8,8 @@ class Workshop(models.Model):
     school = models.ForeignKey('School', on_delete=models.SET_NULL, null=True)
     know_or_bring = models.TextField()
     workshop_is_for = models.TextField()
-    presenter = models.ManyToManyField('User', related_name='Presenter')
-    attendees = models.ManyToManyField('User', related_name='Attendee')
+    presenter = models.ManyToManyField('Teacher', related_name='Presenter')
+    attendees = models.ManyToManyField('Teacher', related_name='Attendee')
     campus = models.CharField(max_length=20, blank=True)
     room = models.CharField(max_length=20, blank=True)
     category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.SET_NULL)
@@ -43,7 +43,7 @@ class Registration(models.Model):
     attendee = models.ForeignKey('User', on_delete=models.CASCADE)
 
 
-class User(models.Model):
+class Teacher(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
